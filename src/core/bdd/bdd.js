@@ -37,7 +37,9 @@ function connection(){
 
 
 
+});
+
 }
 
 
-exports.connection = connection;
+export {connection};

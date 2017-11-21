@@ -1,8 +1,10 @@
 const express = require('express');
-
+const bdd = require('../bdd/bdd.js');
 class Webserver {
-    constructor() {
 
+
+    constructor() {
+      bdd.connection();
         this.express = null;
         this.server = null;
     }
