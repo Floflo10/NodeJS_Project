@@ -32,6 +32,8 @@
     <Compile Include="server.js" />
     <Compile Include="src\core\webserver\404.js" />
     <Compile Include="src\core\webserver\index.js" />
+    <Compile Include="src\core\webserver\routage.js" />
+    <Content Include=".babelrc" />
     <Content Include="package.json" />
     <Content Include="README.md" />
   </ItemGroup>
