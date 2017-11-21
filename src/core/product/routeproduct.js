@@ -1,8 +1,10 @@
+const product = require('app/core/product');
+
 function routeproduct(app)
 {
 
 app.get('/product', function (req, res) {
-    res.send('GET request to the homepage');
+  product.list();
 });
 
 app.get('/product/:id', function (req, res) {

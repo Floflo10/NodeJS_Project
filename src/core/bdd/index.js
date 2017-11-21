@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+let OrderModel;
+let OrderlineModel;
+let ProductModel;
 
 function connection(callback){
 
@@ -31,9 +34,9 @@ function connection(callback){
 
 
 
-    const OrderModel = mongoose.model('Order', OrderSchema);
-    const OrderlineModel = mongoose.model('Orderline', OrderlineSchema);
-    const ProductModel = mongoose.model('Product', ProductSchema);
+     OrderModel = mongoose.model('Order', OrderSchema);
+     OrderlineModel = mongoose.model('Orderline', OrderlineSchema);
+     ProductModel = mongoose.model('Product', ProductSchema);
 
 callback();
 
@@ -42,4 +45,4 @@ callback();
 }
 
 
-export {connection};
+export {connection, OrderModel, OrderlineModel, ProductModel};
