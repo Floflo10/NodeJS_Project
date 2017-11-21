@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 
-mongoose.connect('mongodb://127.0.0.1/tasks'), {useMongoClient: true}, (err) =>{
+mongoose.connect('mongodb://127.0.0.1/tasks', {useMongoClient: true}, (err) =>{
 
   if(err){
     throw err;
@@ -21,7 +21,7 @@ mongoose.connect('mongodb://127.0.0.1/tasks'), {useMongoClient: true}, (err) =>{
 
   TaskModel.create(params, (error, tasks) =>{
     if(!error){
-      console.log(task);
+      console.log(tasks);
       TaskModel.find((error, tasks) => {
         if(!error){
           console.log(tasks);
@@ -32,4 +32,5 @@ mongoose.connect('mongodb://127.0.0.1/tasks'), {useMongoClient: true}, (err) =>{
     }
   });
 
-}
+
+});
