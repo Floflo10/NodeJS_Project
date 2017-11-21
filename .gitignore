@@ -319,6 +319,8 @@ typings/
 # dotenv environment variables file
 .env
 
+# MongoDB data
+data/
 
 $RECYCLE.BIN/
 
