@@ -4,7 +4,9 @@ function routeproduct(app)
 {
 
 app.get('/product', function (req, res) {
-  product.list();
+  product.list((data) =>{
+    res.json(data);
+  });
 });
 
 app.get('/product/:id', function (req, res) {
