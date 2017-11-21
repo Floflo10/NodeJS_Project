@@ -1,10 +1,11 @@
 const express = require('express');
 const bdd = require('../bdd/bdd.js');
+const route = require('../webserver/routage.js');
+
 class Webserver {
 
 
     constructor() {
-      bdd.connection();
         this.express = null;
         this.server = null;
     }

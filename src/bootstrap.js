@@ -1,7 +1,15 @@
 import Webserver from 'app/core/webserver';
+const bdd = require('app/core/bdd/bdd.js');
+const routage = require('app/core/webserver/routage.js');
 
-Webserver.start(3000, (err) => {
+bdd.connection((err) => {
+
+  Webserver.start(3000, (err, express) => {
     if (!err) {
-        console.log('Webserver started');
+      console.log('Webserver started');
+      routage.route(express);
     }
+  });
 });
+
+

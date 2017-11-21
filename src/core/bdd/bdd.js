@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-function connection(){
+function connection(callback){
 
 
   mongoose.connect('mongodb://127.0.0.1/dbcommerce', {useMongoClient: true}, (err) =>{
@@ -35,7 +35,7 @@ function connection(){
     const OrderlineModel = mongoose.model('Orderline', OrderlineSchema);
     const ProductModel = mongoose.model('Product', ProductSchema);
 
-
+callback();
 
 });
 
