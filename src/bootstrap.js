@@ -1,6 +1,6 @@
 import Webserver from 'app/core/webserver';
-const bdd = require('app/core/bdd/bdd.js');
-const routage = require('app/core/webserver/routage.js');
+const bdd = require('app/core/bdd');
+const routage = require('app/core/routage');
 
 bdd.connection((err) => {
 

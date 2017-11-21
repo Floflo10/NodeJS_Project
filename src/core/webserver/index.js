@@ -1,6 +1,6 @@
 const express = require('express');
-const bdd = require('../bdd/bdd.js');
-const route = require('../webserver/routage.js');
+const bdd = require('app/core/bdd');
+const route = require('app/core/routage');
 
 class Webserver {
 
