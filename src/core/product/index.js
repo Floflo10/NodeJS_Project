@@ -7,4 +7,17 @@ callback(data);
 });
 }
 
-export {list};
+
+function recup(idrecup, callback){
+product.ProductModel.find({ _id: idrecup}, (data) =>{
+  callback(data);
+});
+}
+
+function add(name, price){
+console.log(name);
+console.log(price);
+
+}
+
+export {list, recup, add};
