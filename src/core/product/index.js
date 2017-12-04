@@ -41,4 +41,17 @@ product.ProductModel.create({ name: nameAdd, Price: priceAdd }, function (err, n
 
 }
 
-export {list, recup, add};
+function DeleteProd(idprod){
+  console.log(idprod);
+  product.ProductModel.remove({ _id: idprod}, function (err) {
+  if(err){
+    return handleError(err);
+  }else{
+    console.log('ça marche');
+  }
+  // removed!
+});
+}
+
+
+export {list, recup, add, DeleteProd};

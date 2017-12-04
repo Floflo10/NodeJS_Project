@@ -30,6 +30,7 @@ app.put('/product', function (req, res) {
 
 app.delete('/product/:id', function (req, res) {
     var id = req.params.id;
+    product.DeleteProd(id);
 });
 
 app.post('/product/:id', function (req, res) {
