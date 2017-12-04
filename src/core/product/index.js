@@ -54,4 +54,16 @@ function DeleteProd(idprod){
 }
 
 
-export {list, recup, add, DeleteProd};
+function UpdateProd(idprod, nameUpdate, priceUpdate, callback){
+
+
+  product.ProductModel.findById(idprod, function (err, doc) {
+  doc.name = nameUpdate;
+  doc.Price = priceUpdate;
+  doc.save(callback(doc));
+
+});
+
+}
+
+export {list, recup, add, DeleteProd, UpdateProd};

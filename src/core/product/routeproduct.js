@@ -35,6 +35,11 @@ app.delete('/product/:id', function (req, res) {
 
 app.post('/product/:id', function (req, res) {
     var id = req.params.id;
+    var price = req.body.price;
+    var name = req.body.name;
+    product.UpdateProd(id, name, price, (callback)=>{
+      res.json(callback);
+    });
 });
 
 }
