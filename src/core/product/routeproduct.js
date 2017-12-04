@@ -21,11 +21,11 @@ app.get('/product/:id', function (req, res) {
 });
 
 app.put('/product', function (req, res) {
-  var values = req.body;
-  console.log(values);
-  var name = 'maison';
-  var price = 12;
-    product.add(name, price);
+  var price = req.body.price;
+  var name = req.body.name;
+    product.add(name, price, (data)=>{
+      res.send(data);
+    });
 });
 
 app.delete('/product/:id', function (req, res) {
