@@ -1,6 +1,7 @@
 const express = require('express');
 const bdd = require('app/core/bdd');
 const route = require('app/core/routage');
+const bodyParser = require('body-parser');
 
 class Webserver {
 
@@ -17,6 +18,11 @@ class Webserver {
             if (typeof callback === 'function') {
                 callback(err, this.express);
             }
+
+            this.express.use(bodyParser.urlencoded({
+                extended: true
+            }));
+
         });
     }
 
