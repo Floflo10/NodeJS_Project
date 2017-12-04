@@ -1,4 +1,4 @@
-const bdd = require('app/core/bdd/bdd.js');
+const bdd = require('app/core/bdd/index.js');
 
 function routeproduct(app)
 {
