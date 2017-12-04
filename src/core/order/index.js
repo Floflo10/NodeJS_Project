@@ -2,7 +2,7 @@ const order = require('app/core/bdd');
 
 function list(callback)
 {
-  order.Orderline.find((err, data) => {
+  order.OrderModel.find((err, data) => {
     callback(data);
   });
 }

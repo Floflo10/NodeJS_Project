@@ -1,4 +1,4 @@
-const bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
 const order = require('app/core/order');
 
 function routecommande(app)

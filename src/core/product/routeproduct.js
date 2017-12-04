@@ -4,12 +4,7 @@ function routeproduct(app)
 {
 
 app.get('/product', function (req, res) {
-  if (err) throw err;
-  db.collection("ProductSchema").find({}).toArray(function(err, result) {
-    if (err) throw err;
-    console.log(results);
-    bdd.close();
-  })
+  
 });
 
 app.get('/product/:id', function (req, res) {
