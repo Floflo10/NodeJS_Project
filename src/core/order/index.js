@@ -9,7 +9,9 @@ function list(callback)
 
 function recup(idrecup, callback)
 {
-
+  product.OrderModel.find({_id: idrecup}, (data) =>{
+    callback(data);
+  });
 }
 
 function add(name, price)

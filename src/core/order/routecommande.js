@@ -13,8 +13,10 @@ function routecommande(app)
   });
 
   app.get('/order/:id', function (req, res) {
-      var id = req.params.id;
-  });
+    order.list((data) =>{
+      res.json(data);
+    })
+});
 
   app.put('/order', function (req, res) {
       res.send('GET request to the homepage');
