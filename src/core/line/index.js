@@ -1,18 +1,24 @@
-const line = require('app/core/bdd').OrderlineModel;
+const Line = require('app/core/bdd');
 
-function addLine(product, order, quantity) {
 
-    var Orderline = new Orderline();
+function addLine(req, res) {
 
-    Orderline.product = product;
-    Orderline.order = order;
-    Orderline.quantity = quantity;
+    console.log(req.body);
 
-    Orderline.save(function (err) {
-        if (err)
+
+    Line.OrderlineModel.create({ product: req.body.product, order: req.body.order, quantity: req.body.quantity }, function (err) {
+        if (err) {
             res.send(err);
+        } else {
+            res.json({ message: 'Bite added to the locker!', data: Line });
+        }
+            
     });
+
+    
+
+    console.log(Line);
+
 }
 
-
-export {addline};
+export {addLine};

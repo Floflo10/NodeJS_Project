@@ -1,6 +1,7 @@
 const express = require('express');
 const bdd = require('app/core/bdd');
 const route = require('app/core/routage');
+const bodyParser = require('body-parser'); 
 
 class Webserver {
 
@@ -8,15 +9,20 @@ class Webserver {
     constructor() {
         this.express = null;
         this.server = null;
+
     }
 
     start(port, callback) {
         this.express = express();
 
+        this.express.use(bodyParser.json());
+        this.express.use(bodyParser.urlencoded({ extended: true }));
+
         this.server = this.express.listen(port, (err) => {
             if (typeof callback === 'function') {
                 callback(err, this.express);
             }
+
         });
     }
 
