@@ -16,7 +16,11 @@ function recup(idrecup, callback){
 
 
 product.ProductModel.findById(idrecup, function(err, data) {
-   callback(data);
+  if(!err){
+     callback(data);
+  }else{
+    callback('probleme de requête');
+  }
  });
 
 
@@ -30,7 +34,7 @@ function add(nameAdd, priceAdd, callback){
 
 product.ProductModel.create({ name: nameAdd, Price: priceAdd }, function (err, name, Price) {
   if (err){
-    return handleError(err);
+  callback('probleme de requête');
   }else{
     var data = nameAdd+' et '+priceAdd;
     callback(data);
@@ -41,11 +45,11 @@ product.ProductModel.create({ name: nameAdd, Price: priceAdd }, function (err, n
 
 }
 
-function DeleteProd(idprod){
+function DeleteProd(idprod, callback){
   console.log(idprod);
   product.ProductModel.remove({ _id: idprod}, function (err) {
   if(err){
-    return handleError(err);
+  callback('probleme lors du delete');
   }else{
     console.log('ça marche');
   }
@@ -56,11 +60,14 @@ function DeleteProd(idprod){
 
 function UpdateProd(idprod, nameUpdate, priceUpdate, callback){
 
-
   product.ProductModel.findById(idprod, function (err, doc) {
-  doc.name = nameUpdate;
-  doc.Price = priceUpdate;
-  doc.save(callback(doc));
+    if(!err){
+        doc.name = nameUpdate;
+        doc.Price = priceUpdate;
+        doc.save(callback(doc));
+    }else{
+      callback('probleme d update');
+    }
 
 });
 
