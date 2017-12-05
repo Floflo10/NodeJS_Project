@@ -1,7 +1,11 @@
 const product = require('app/core/product');
+var bodyParser = require('body-parser');
+
 
 function routeproduct(app)
 {
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({extended : true}));
 
 app.get('/product', function (req, res) {
   product.list((data) =>{
@@ -11,18 +15,33 @@ app.get('/product', function (req, res) {
 
 app.get('/product/:id', function (req, res) {
     var id = req.params.id;
+    product.recup(id, (data) =>{
+      res.json(data);
+    });
 });
 
 app.put('/product', function (req, res) {
-    res.send('GET request to the homepage');
+  var price = req.body.price;
+  var name = req.body.name;
+    product.add(name, price, (data)=>{
+      res.send(data);
+    });
 });
 
 app.delete('/product/:id', function (req, res) {
     var id = req.params.id;
+    product.DeleteProd(id, (data)=>{
+      res.send(data);
+    });
 });
 
 app.post('/product/:id', function (req, res) {
     var id = req.params.id;
+    var price = req.body.price;
+    var name = req.body.name;
+    product.UpdateProd(id, name, price, (callback)=>{
+      res.json(callback);
+    });
 });
 
 }
