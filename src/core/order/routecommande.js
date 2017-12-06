@@ -20,6 +20,9 @@ function routecommande(app)
   });
 
   app.put('/order', function (req, res) {
+    if(req.body.codebody === undefined || req.body.date === undefined || req.body.total === undefined || req.body.statusbody === undefined) {
+      res.send('il faut envoyer les bon post');
+    }else{
       var code = req.body.codebody;
       var date = req.body.date;
       var total = req.body.total;
@@ -27,6 +30,8 @@ function routecommande(app)
       order.CreateOrder(code, date, total, status, (data)=>{
         res.send(data);
       });
+    }
+
   });
 
   app.delete('/order/:id', function (req, res) {
@@ -35,14 +40,18 @@ function routecommande(app)
   });
 
   app.post('/order/:id', function (req, res) {
-    var id = req.params.id;
-    var code = req.body.codebody;
-    var total = req.body.total;
-    var date = req.body.date;
-    var status = req.body.statusbody;
-    order.UpdateOrder(id, code, total, date, status, (data) =>{
-      res.send(data);
-    })
+    if(req.body.codebody === undefined || req.body.date === undefined || req.body.total === undefined || req.body.statusbody === undefined) {
+      res.send('il faut envoyer les bon post');
+    }else{
+      var id = req.params.id;
+      var code = req.body.codebody;
+      var total = req.body.total;
+      var date = req.body.date;
+      var status = req.body.statusbody;
+      order.UpdateOrder(id, code, total, date, status, (data) =>{
+        res.send(data);
+      });
+    }
   });
 }
 
