@@ -4,32 +4,46 @@ const order = require('app/core/order');
 function routecommande(app)
 {
   app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({extended: true}));
+  app.use(bodyParser.urlencoded({extended : true}));
 
   app.get('/order', function (req, res) {
-    order.list((data) => {
-      res.json(data);
-    });
-  });
-
-  app.get('/order/:id', function (req, res) {
-    order.list((data) =>{
-      res.json(data);
-    })
+    order.ListOrder((data) =>{
+     res.json(data);
+   });
 });
 
+  app.get('/order/:id', function (req, res) {
+    var id = req.params.id;
+     order.GetOrderById(id, (data) =>{
+       res.json(data);
+     });
+  });
+
   app.put('/order', function (req, res) {
-      res.send('GET request to the homepage');
+      var code = req.body.codebody;
+      var date = req.body.date;
+      var total = req.body.total;
+      var status = req.body.statusbody;
+      order.CreateOrder(code, date, total, status, (data)=>{
+        res.send(data);
+      });
   });
 
   app.delete('/order/:id', function (req, res) {
-      var id = req.params.id;
+    var id = req.params.id;
+    order.DeleteOrder(id);
   });
 
   app.post('/order/:id', function (req, res) {
-      var id = req.params.id;
+    var id = req.params.id;
+    var code = req.body.codebody;
+    var total = req.body.total;
+    var date = req.body.date;
+    var status = req.body.statusbody;
+    order.UpdateOrder(id, code, total, date, status, (data) =>{
+      res.send(data);
+    })
   });
-
 }
 
 export {routecommande};

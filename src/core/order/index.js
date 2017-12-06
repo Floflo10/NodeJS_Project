@@ -1,23 +1,70 @@
 const order = require('app/core/bdd');
 
-function list(callback)
-{
-  order.OrderModel.find((err, data) => {
-    callback(data);
+function ListOrder(callback){
+  order.OrderModel.find((err, data) =>{
+    if(!err)
+    {
+      callback(data);
+    }else{
+      data = "Erreur lors de la récupération des commandes";
+      callback(data);
+    }
   });
 }
 
-function recup(idrecup, callback)
+function GetOrderById(idrecup, callback)
 {
-  product.OrderModel.find({_id: idrecup}, (data) =>{
-    callback(data);
+  order.OrderModel.findById(idrecup, function(err, data) {
+    if(!err)
+    {
+      callback(data);
+    }
+    else {
+      data = "Erreur lors de la récupération de la commande.";
+      callback(data);
+    }
+   });
+}
+
+function CreateOrder(codeAdd, totalAdd, dateAdd, statusAdd, callback)
+{
+  order.OrderModel.create({ code: codeAdd, date: dateAdd, total: totalAdd, Status: statusAdd }, function (err, code, date, total, Status) {
+
+      var data = codeAdd + ' , '+ dateAdd + ' , ' + totalAdd + ' et ' + statusAdd;
+      callback(data);
+
+  })
+}
+
+
+function DeleteOrder(idprod)
+{
+    order.OrderModel.remove({ _id: idprod}, function (err) {
+    if(err){
+      console.log("Erreur lors de la suppression d'une commande.")
+    }else{
+      console.log('Commande supprimée avec succès.');
+    }
   });
 }
 
-function add(name, price)
-{
-  console.log(name);
-  console.log(price);
+function UpdateOrder(idprod, codeUpdate, totalUpdate, dateUpdate, StatusUpdate, callback){
+  order.OrderModel.findById(idprod, function (err, doc) {
+    if (!err)
+    {
+      doc.code = codeUpdate;
+      doc.total = totalUpdate;
+      doc.date = dateUpdate;
+      doc.Status = StatusUpdate;
+
+      doc.save(callback(doc));
+    }else{
+      doc = "Erreur lors de la mise à jour de la commande.";
+      callback(doc);
+    }
+  });
 }
 
-export {list, recup, add};
+
+
+export {ListOrder, GetOrderById, CreateOrder, DeleteOrder, UpdateOrder};
