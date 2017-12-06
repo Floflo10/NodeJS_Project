@@ -1,24 +1,58 @@
 const Line = require('app/core/bdd');
 
 
-function addLine(req, res) {
-
-    console.log(req.body);
+function addLine(productAdd, orderAdd, quantityAdd, callback) {
 
 
-    Line.OrderlineModel.create({ product: req.body.product, order: req.body.order, quantity: req.body.quantity }, function (err) {
+    Line.OrderlineModel.create({ product: productAdd, order: orderAdd, quantity: quantityAdd }, function (err, product, order, quantity) {
         if (err) {
-            res.send(err);
+            callback('Probleme lors du passage de la requête Add :' + err);
         } else {
-            res.json({ message: 'Bite added to the locker!', data: Line });
+            var data = 'Product: ' + productAdd + ' | Order: ' + orderAdd + ' | Quantity: ' + quantityAdd;
+            callback(data);
         }
             
     });
 
     
+}
 
-    console.log(Line);
+function deleteLine(idLine, callback) {
+    Line.OrderlineModel.remove({ _id: idLine }, function (err) {
+        if (err) {
+            callback('Probleme lors du passage de la requête Delete :' + err);
+        } else {
+            var data = 'Suppression de' + idLine + 'effectuée';
+        }
+    });
+} 
+
+function bi(callback) {
+    Line.OrderlineModel.find((err, data) => {
+        callback(data);
+    });
+} 
+
+function updateLine(_id, productUp, orderUp, quantityUp, callback) {
+
+
+    Line.OrderlineModel.findById({ _id }, function (err, Up) {
+        if (err) {
+            callback('Probleme lors du passage de la requête Update :' + err);
+        } else {
+            Up.product = productUp;
+            Up.order = orderUp;
+            Up.quantity = quantityUp;
+            Up.save();
+
+            var data = 'Product: ' + productUp + ' | Order: ' + orderUp + ' | Quantity: ' + quantityUp;
+            callback(data);
+        }
+
+    });
+
 
 }
 
-export {addLine};
+
+export { addLine, deleteLine, updateLine, bi };
