@@ -7,7 +7,7 @@ function confirmMetier(_id, callback) {
         if (err) {
             callback('Probleme lors du passage de la requête Update :' + err);
         } else {
-            Up.statut = " confirmed";
+            Up.Status = "confirmed";
             Up.save();
 
             var data = 'Order confirmed for ' + _id;
@@ -23,10 +23,10 @@ function confirmMetier(_id, callback) {
 function turnoverMonth(callback) {
 
     Metier.OrderModel.aggregate(
-        [{ $match: { statut: "confirmed" } },
+        [{ $match: { Status: "confirmed" } },
         {
             $group: {
-                Result: { month: { $month: "$date" }, somme: { $sum: "$total" } },
+                _id: { month: { $month: "$date" }, somme: { $sum: "$total" } },
             }
         }
 
@@ -46,10 +46,11 @@ function turnoverMonth(callback) {
 
 function bestProduct(callback) {
 
-    Metier.OrderModel.aggregate(
-        { $group: { "Product": "$product", "Number": { $sum: 1 } } },
+    Metier.OrderModel.aggregate([
+        { $group: { "_id": "$code", "count": { $sum: 1 } } },
         { $sort: { "count": -1 } },
-        { $limit: 1 },
+        { $limit: 1 }
+    ],
         function (err, data) {
             if (err) {
                 callback('Probleme lors du calcule :' + err);
@@ -58,7 +59,6 @@ function bestProduct(callback) {
             }
 
         });
-
 
 }
 
