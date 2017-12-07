@@ -3,8 +3,18 @@ const bdd = require('app/core/bdd');
 const route = require('app/core/routage');
 const bodyParser = require('body-parser');
 
-class Webserver {
+/*
+*
+* @author VELLA CYRIL <cyril.vella@ynov.com>
+* @copyright VELLA CYRIL - 2017
+*/
 
+/**
+ * Création du serveur web
+ * @class
+ */
+
+class Webserver {
 
     constructor() {
         this.express = null;
@@ -28,14 +38,14 @@ class Webserver {
 
     close(callback) {
         if (this.server === null) {
-            callback(new Error('Web Server is not runnug'));
+            callback(new Error('Web Server is not running'));
         } else {
             this.server.close(((err) => {
                 if (typeof callback === 'function') {
                     callback(err);
                 }
             }
-            ));
+          ));
         }
     }
 }
