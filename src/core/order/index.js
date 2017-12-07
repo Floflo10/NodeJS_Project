@@ -70,7 +70,7 @@ function CreateOrder(codeAdd, totalAdd, dateAdd, statusAdd, callback)
       var data = codeAdd + ' , '+ dateAdd + ' , ' + totalAdd + ' et ' + statusAdd;
       callback(data);
     }else{
-      data = "Erreur lors de la création d'une commande".
+      data = "Erreur lors de la création d'une commande";
       callback(data);
     }
   })
@@ -90,7 +90,7 @@ function DeleteOrder(idprod)
   order.OrderModel.remove({ _id: idprod}, function (err)
   {
     if(err){
-      console.log("Erreur lors de la suppression d'une commande.")
+      console.log("Erreur lors de la suppression d'une commande.");
     }else{
       console.log('Commande supprimée avec succès.');
     }
