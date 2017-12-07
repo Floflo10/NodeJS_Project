@@ -24,21 +24,21 @@ function turnoverMonth(callback) {
 
     Metier.OrderModel.aggregate(
         [{ $match: { statut: "confirmed" } },
-            {
-                $group: {
-                    Result: { month: { $month: "$date" }, somme: { $sum: "$total" } },
-                }
+        {
+            $group: {
+                Result: { month: { $month: "$date" }, somme: { $sum: "$total" } },
             }
+        }
 
         ],
         function (err, data) {
-        if (err) {
-            callback('Probleme lors du classement :' + err);
-        } else {
-            callback(data);
-        }
+            if (err) {
+                callback('Probleme lors du classement :' + err);
+            } else {
+                callback(data);
+            }
 
-    });
+        });
 
 
 }

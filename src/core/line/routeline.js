@@ -44,12 +44,6 @@ function routeline(app) {
 
     });
 
-  /*  app.get('/order/:orderid/line2', function (req, res) {
-        linefonct.bi((data) => {
-            res.send(data);
-        });
-
-    }); */
 }
 
-export {routeline};
+export { routeline };
