@@ -33,7 +33,7 @@ function turnoverMonth(callback) {
         ],
         function (err, data) {
         if (err) {
-            callback('Probleme lors du passage de la requête Update :' + err);
+            callback('Probleme lors du classement :' + err);
         } else {
             callback(data);
         }
@@ -44,4 +44,24 @@ function turnoverMonth(callback) {
 }
 
 
-export { addLine, deleteLine, updateLine };
+function bestProduct(callback) {
+
+    Metier.OrderModel.aggregate(
+        { $group: { "Product": "$product", "Number": { $sum: 1 } } },
+        { $sort: { "count": -1 } },
+        { $limit: 1 },
+        function (err, data) {
+            if (err) {
+                callback('Probleme lors du calcule :' + err);
+            } else {
+                callback(data);
+            }
+
+        });
+
+
+}
+
+
+
+export { confirmMetier, turnoverMonth, bestProduct };

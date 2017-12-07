@@ -4,7 +4,6 @@ const Metier = require('app/core/bdd');
 function routemetier(app)
 {
 
-
 app.post('/order/:id/confirm', function (req, res) {
     var id = req.params.id;
     metierfonct.confirmMetier(id, (data) => {
@@ -19,7 +18,9 @@ app.get('/dashboard/order', function (req, res) {
 });
 
 app.get('/dashboard/product', function (req, res) {
-    res.send('GET request to the homepage');
+    metierfonct.bestProduct(id, (data) => {
+        res.send(data);
+    });
 });
 
 
