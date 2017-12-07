@@ -73,7 +73,7 @@ function CreateOrder(codeAdd, totalAdd, dateAdd, statusAdd, callback)
       data = "Erreur lors de la création d'une commande";
       callback(data);
     }
-  })
+  });
 }
 
 /*
