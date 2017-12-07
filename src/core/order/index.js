@@ -64,7 +64,7 @@ function CreateOrder(codeAdd, totalAdd, dateAdd, statusAdd, callback)
   * @callback create
   */
 
-  order.OrderModel.create({ code: codeAdd, date: dateAdd, total: totalAdd, Status: statusAdd }, function (err, code, date, total, Status) {
+  order.OrderModel.create({ code: codeAdd, total: totalAdd, date: dateAdd, Status: statusAdd }, function (err, code, date, total, Status) {
     if(!err)
     {
       var data = codeAdd + ' , '+ dateAdd + ' , ' + totalAdd + ' et ' + statusAdd;

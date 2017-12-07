@@ -56,7 +56,7 @@ function routecommande(app)
       var date = req.body.date;
       var total = req.body.total;
       var status = req.body.statusbody;
-      order.CreateOrder(code, date, total, status, (data)=>{
+      order.CreateOrder(code, total, date, status, (data)=>{
         res.send(data);
       });
     }
