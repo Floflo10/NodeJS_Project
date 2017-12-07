@@ -3,10 +3,6 @@ let OrderModel;
 let OrderlineModel;
 let ProductModel;
 
-let OrderModel;
-let OrderlineModel;
-let ProductModel;
-
 /*
 * Ici, nous avons la connexion à la base de données MongoDB avec la création des schémas (tables).
 * @summary Connexion à la base de données MongoDB.
