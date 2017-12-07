@@ -27,11 +27,11 @@ function deleteLine(idLine, callback) {
     });
 } 
 
-function bi(callback) {
+/* function bi(callback) {
     Line.OrderlineModel.find((err, data) => {
         callback(data);
     });
-} 
+} */
 
 function updateLine(_id, productUp, orderUp, quantityUp, callback) {
 
@@ -55,4 +55,4 @@ function updateLine(_id, productUp, orderUp, quantityUp, callback) {
 }
 
 
-export { addLine, deleteLine, updateLine, bi };
+export { addLine, deleteLine, updateLine };
