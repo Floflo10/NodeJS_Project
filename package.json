@@ -25,6 +25,8 @@
     "nodemon": "^1.12.1"
   },
   "scripts": {
+    "eslint": "eslint ./src",
+    "eslint-fix": "eslint ./src --fix",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --exec babel-node -- ./src/bootstrap.js --watch ./src",
     "jsdoc": "jsdoc ./src -r -d ./documentation"
