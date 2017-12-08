@@ -1,5 +1,5 @@
 /**
-* @fileOverview   FIchier de d�marrage du serveur cr�ant le service sur le port indiqu�
+* @fileOverview FIihier de d�marrage du serveur cr�ant le service sur le port indiqu�
 * @author Hismael Hadj-Arab
 * @author Florian Martines
 * @author Cyril Vella
