@@ -25,9 +25,9 @@
     "nodemon": "^1.12.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --exec babel-node -- ./src/bootstrap.js --watch ./src",
     "jsdoc": "jsdoc ./src -r -d ./documentation",
-    "mocha": "mocha"
+    "test": "mocha --compilers js:babel-core/register --recursive",
+    "test-watch": "npm run test -- --watch"
   }
 }
