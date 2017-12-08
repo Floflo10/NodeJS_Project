@@ -1,15 +1,19 @@
+/**
+* @fileOverview   FIchier de démarrage du serveur créant le service sur le port indiqué
+* @author Hismael Hadj-Arab
+* @author Florian Martines
+* @author Cyril Vella
+*
+* @requieres app/core/webserver
+* @requieres app/core/bdd
+* @requieres app/core/routage
+*/
+
+
 import Webserver from 'app/core/webserver';
 const bdd = require('app/core/bdd');
 const routage = require('app/core/routage');
 
-
-/*
-* Connexion au serveur local sur le port 3000 avec l'utilisation de Express.JS
-* @summary Connexion au serveur.
-*
-* @author VELLA CYRIL <cyril.vella@ynov.com>
-* @copyright VELLA CYRIL - 2017
-*/
 
 bdd.ConnectDB((err) => {
 

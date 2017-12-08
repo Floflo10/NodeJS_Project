@@ -1,19 +1,26 @@
+/**
+ * Module BDD
+ * @fileOverview Module de création de la BDD
+ * @author Ismael Hadj-Arab
+ * @author Florian Martines
+ * @author Cyril Vella
+ *
+ * @requires NPM:mongoose
+ *
+ *
+ * @module bdd
+ * @see app/core/bdd
+ */
+
 const mongoose = require('mongoose');
 let OrderModel;
 let OrderlineModel;
 let ProductModel;
 
-/*
-* Ici, nous avons la connexion à la base de données MongoDB avec la création des schémas (tables).
-* @summary Connexion à la base de données MongoDB.
-*
-* @author HADJ ISMAEL <ismael.hadjarab@ynov.com - VELLA CYRIL <cyril.vella@ynov.com - MARTINES FLORIAN <florian.martines@ynov.com>
-* @copyright VELLA CYRIL - HADJ ISMAEL - MARTINES FLORIAN - 2017
-*/
-
-/*
-* @function connexion
-*/
+/**
+ * Fonction gérant la connection à la BDD
+ * @param {any} callback Callbakc de la fontion de connectoin à la BDD
+ */
 function ConnectDB(callback) {
     mongoose.connect('mongodb://127.0.0.1/dbcommerce', { useMongoClient: true }, (err) => {
 
@@ -48,9 +55,5 @@ function ConnectDB(callback) {
     });
 }
 
-/**
- * Export fonction de routage URL
- * @module ConnectDB, OrderModel, ProductModel
- */
-
+/** Export de la fonction de connection à la BDD et des Models OrderModel, OrderlineModel, ProductModel */
 export { ConnectDB, OrderModel, OrderlineModel, ProductModel };

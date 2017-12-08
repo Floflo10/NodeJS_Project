@@ -34,13 +34,13 @@
     <Compile Include="src\core\line\routeline.js" />
     <Compile Include="src\core\metier\index.js" />
     <Compile Include="src\core\metier\routemetier.js" />
+    <Compile Include="src\core\order\index.js" />
     <Compile Include="src\core\order\routecommande.js" />
     <Compile Include="src\core\product\index.js" />
     <Compile Include="src\core\product\routeproduct.js" />
     <Compile Include="src\core\routage\index.js" />
     <Compile Include="src\core\webserver\404.js" />
     <Compile Include="src\core\webserver\index.js" />
-    <Compile Include="src\core\webserver\routage.js" />
     <Content Include=".babelrc" />
     <Content Include="package.json" />
     <Content Include="README.md" />

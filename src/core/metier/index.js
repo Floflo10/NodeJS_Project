@@ -1,6 +1,23 @@
+/**
+ * Module Metier
+ * @fileOverview Module contenant les fonctions CRUD pour Metier
+ * @author Florian Martines
+ *
+ * @requires app/core/bdd
+ *
+ *
+ * @module metier
+ * @see app/core/metier
+ */
+
 const Metier = require('app/core/bdd');
 
 
+/**
+ * Fonction correspondtant au POST qui modifie une commande et passe son status en confirmed
+ * @param {Number} _id ID de la commande à confirmer
+ * @param {any} callback Callback renvoyant le résultat de la fonction confirMetier
+ */
 function confirmMetier(_id, callback) {
 
     Metier.OrderModel.findById({ _id }, function (err, Up) {
@@ -19,7 +36,10 @@ function confirmMetier(_id, callback) {
 
 }
 
-
+/**
+ * Fonction correspondant au GET calculant le total de bénéfices à chaque mois
+ * @param {any} callback Callback renvoyant le résultat de la fonction turnoverMonth
+ */
 function turnoverMonth(callback) {
 
     Metier.OrderModel.aggregate(
@@ -43,7 +63,10 @@ function turnoverMonth(callback) {
 
 }
 
-
+/**
+ * Fonction correspondant au GET renvoyant le produit le mieux vendus
+ * @param {any} callback Callback renvoyant le résultat de la fonction bestProduct
+ */
 function bestProduct(callback) {
 
     Metier.OrderModel.aggregate([
@@ -62,6 +85,5 @@ function bestProduct(callback) {
 
 }
 
-
-
+/** Export des fonctions confirmMetier, turnoverMonth, bestProduct */
 export { confirmMetier, turnoverMonth, bestProduct };
