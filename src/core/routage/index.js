@@ -1,16 +1,30 @@
+/**
+ * Module Routage
+ * @fileOverview Module de création des différentes routes
+ * @author Ismael Hadj-Arab
+ * @author Florian Martines
+ * @author Cyril Vella
+ *
+ * @requires app/core/metier
+ * @requires app/core/product
+ * @requires app/core/line
+ * @requires app/core/order
+ *
+ *
+ * @module route
+ * @see app/core/routage
+ */
+
+
 const routecommande = require('app/core/order/routecommande.js');
 const routeproduct = require('app/core/product/routeproduct.js');
 const routeline = require('app/core/line/routeline.js');
 const routemetier = require('app/core/metier/routemetier.js');
 
-/*
-* Fonction regroupant toutes les routes de l'API (commandes, produits, etc.)
-* @summary Point d'entrée de l'API - Routes URL.
-*
-* @author VELLA CYRIL <cyril.vella@ynov.com>
-* @copyright VELLA CYRIL - 2017
-*/
-
+/**
+ * Fonction de création des différentes routes de l'application
+ * @param {any} app Paramètre de la fonctoin faisant référence à l'applicatoin elle-même
+ */
 function route(app) {
     routecommande.routecommande(app);
     routeproduct.routeproduct(app);
@@ -18,9 +32,5 @@ function route(app) {
     routemetier.routemetier(app);
 }
 
-/**
- * Export fonction de routage URL
- * @module route
- */
-
+/** Créer Routes */
 export { route };
