@@ -1,5 +1,21 @@
+/**
+ * Module RouteProduct
+ * @fileOverview Module de gestion des routes de type Product
+ * @author Hismael Hadj-Arab
+ *
+ * @requires app/core/product
+ *
+ *
+ * @module routeproduct
+ * @see app/core/routeproduct
+ */
+
 const product = require('app/core/product');
 
+/**
+ * Fonction de création des routes pour Product
+ * @param {any} app Passage en paramètre de l'application
+ */
 
 function routeproduct(app) {
 
@@ -42,4 +58,5 @@ function routeproduct(app) {
 
 }
 
+/** Créer Route de Product */
 export { routeproduct };

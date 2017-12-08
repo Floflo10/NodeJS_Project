@@ -1,7 +1,22 @@
+/**
+ * Module RouteLine
+ * @fileOverview Module de gestion des routes de type Line
+ * @author Florian Martines
+ *
+ * @requires app/core/line
+ *
+ *
+ * @module routeline
+ * @see app/core/routeline
+ */
+
 const linefonct = require('app/core/line');
 const Line = require('app/core/bdd');
 
-
+/**
+ * Fonction de création des routes pour Line
+ * @param {any} app Passage en paramètre de l'application
+ */
 function routeline(app) {
 
     app.put('/order/:orderid/line/', function (req, res) {
@@ -46,4 +61,5 @@ function routeline(app) {
 
 }
 
+/** Créer Route de Metier */
 export { routeline };
