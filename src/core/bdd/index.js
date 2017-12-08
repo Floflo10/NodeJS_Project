@@ -14,40 +14,38 @@ let ProductModel;
 /*
 * @function connexion
 */
-function ConnectDB(callback)
-{
-  mongoose.connect('mongodb://127.0.0.1/dbcommerce', {useMongoClient: true}, (err) =>{
+function ConnectDB(callback) {
+    mongoose.connect('mongodb://127.0.0.1/dbcommerce', { useMongoClient: true }, (err) => {
 
-    if(err)
-    {
-      throw err;
-    }
+        if (err) {
+            throw err;
+        }
 
-    const OrderSchema = new mongoose.Schema({
-      code: String,
-      date: Date,
-      total: Number,
-      Status: String
+        const OrderSchema = new mongoose.Schema({
+            code: String,
+            date: Date,
+            total: Number,
+            Status: String
+        });
+
+        const OrderlineSchema = new mongoose.Schema({
+            product: Number,
+            order: Number,
+            quantity: Number
+        });
+
+
+        const ProductSchema = new mongoose.Schema({
+            name: String,
+            Price: Number
+        });
+
+        OrderModel = mongoose.model('Order', OrderSchema);
+        OrderlineModel = mongoose.model('Orderline', OrderlineSchema);
+        ProductModel = mongoose.model('Product', ProductSchema);
+
+        callback();
     });
-
-    const OrderlineSchema = new mongoose.Schema({
-      product: Number,
-      order: Number,
-      quantity: Number
-    });
-
-
-    const ProductSchema = new mongoose.Schema({
-      name: String,
-      Price: Number
-    });
-
-     OrderModel = mongoose.model('Order', OrderSchema);
-     OrderlineModel = mongoose.model('Orderline', OrderlineSchema);
-     ProductModel = mongoose.model('Product', ProductSchema);
-
-     callback();
-   });
 }
 
 /**
@@ -55,4 +53,4 @@ function ConnectDB(callback)
  * @module ConnectDB, OrderModel, ProductModel
  */
 
-export {ConnectDB, OrderModel, OrderlineModel, ProductModel};
+export { ConnectDB, OrderModel, OrderlineModel, ProductModel };

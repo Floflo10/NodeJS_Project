@@ -11,17 +11,16 @@ const routemetier = require('app/core/metier/routemetier.js');
 * @copyright VELLA CYRIL - 2017
 */
 
-function route(app)
-{
-  routecommande.routecommande(app);
-  routeproduct.routeproduct(app);
-  routeline.routeline(app);
-  routemetier.routemetier(app);
+function route(app) {
+    routecommande.routecommande(app);
+    routeproduct.routeproduct(app);
+    routeline.routeline(app);
+    routemetier.routemetier(app);
 }
 
 /**
  * Export fonction de routage URL
  * @module route
  */
- 
-export {route};
+
+export { route };

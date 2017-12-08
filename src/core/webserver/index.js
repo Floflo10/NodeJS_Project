@@ -1,7 +1,7 @@
 const express = require('express');
 const bdd = require('app/core/bdd');
 const route = require('app/core/routage');
-const bodyParser = require('body-parser'); 
+const bodyParser = require('body-parser');
 
 /*
 *
@@ -45,7 +45,7 @@ class Webserver {
                     callback(err);
                 }
             }
-          ));
+            ));
         }
     }
 }

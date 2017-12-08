@@ -2,7 +2,7 @@
   "name": "projet_node-js",
   "version": "1.0.0",
   "description": "Projet_NodeJS",
-  "main": "server.js",
+  "main": "bootstrap.js",
   "author": {
     "name": "Florian"
   },
