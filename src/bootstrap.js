@@ -1,22 +1,26 @@
-import Webserver from 'app/core/webserver';
-const bdd = require('app/core/bdd');
-const routage = require('app/core/routage');
-
-
-/*
-* Connexion au serveur local sur le port 3000 avec l'utilisation de Express.JS
-* @summary Connexion au serveur.
+/**
+* @fileOverview   FIchier de d�marrage du serveur cr�ant le service sur le port indiqu�
+* @author Hismael Hadj-Arab
+* @author Florian Martines
+* @author Cyril Vella
 *
-* @author VELLA CYRIL <cyril.vella@ynov.com>
-* @copyright VELLA CYRIL - 2017
+* @requieres app/core/webserver
+* @requieres app/core/bdd
+* @requieres app/core/routage
 */
 
-bdd.ConnectDB((err) => {
 
-    Webserver.start(3000, (err, express) => {
-        if (!err) {
-            console.log('Webserver started');
-            routage.route(express);
-        }
-    });
+import Webserver from "app/core/webserver";
+
+const bdd = require("app/core/bdd");
+const routage = require("app/core/routage");
+
+
+bdd.ConnectDB((err) => {
+  Webserver.start(3000, (err, express) => {
+    if (!err) {
+      console.log("Webserver started");
+      routage.route(express);
+    }
+  });
 });
