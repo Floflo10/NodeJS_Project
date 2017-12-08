@@ -10,56 +10,48 @@
  * @see app/core/routeline
  */
 
-const linefonct = require('app/core/line');
-const Line = require('app/core/bdd');
+const linefonct = require("app/core/line");
+const Line = require("app/core/bdd");
 
 /**
- * Fonction de création des routes pour Line
- * @param {any} app Passage en paramètre de l'application
+ * Fonction de crï¿½ation des routes pour Line
+ * @param {any} app Passage en paramï¿½tre de l'application
  */
 function routeline(app) {
+  app.put("/order/:orderid/line/", (req, res) => {
+    const orderid = req.params.orderid;
 
-    app.put('/order/:orderid/line/', function (req, res) {
+    const product = req.body.product;
+    const order = req.body.order;
+    const quantity = req.body.quantity;
 
-        var orderid = req.params.orderid;
-
-        var product = req.body.product;
-        var order = req.body.order;
-        var quantity = req.body.quantity;
-
-        linefonct.addLine(product, order, quantity, (data) => {
-            res.send(data);
-        });
-
+    linefonct.addLine(product, order, quantity, (data) => {
+      res.send(data);
     });
+  });
 
-    app.delete('/order/:orderid/line/:lineid', function (req, res) {
-        var orderid = req.params.orderid;
-        var lineid = req.params.lineid;
+  app.delete("/order/:orderid/line/:lineid", (req, res) => {
+    const orderid = req.params.orderid;
+    const lineid = req.params.lineid;
 
-        linefonct.deleteLine(lineid, (data) => {
-            res.send(data);
-        });
-
-
+    linefonct.deleteLine(lineid, (data) => {
+      res.send(data);
     });
+  });
 
-    app.post('/order/:orderid/line/:lineid', function (req, res) {
-        var orderid = req.params.orderid;
-        var lineid = req.params.lineid;
+  app.post("/order/:orderid/line/:lineid", (req, res) => {
+    const orderid = req.params.orderid;
+    const lineid = req.params.lineid;
 
-        var product = req.body.product;
-        var order = req.body.order;
-        var quantity = req.body.quantity;
+    const product = req.body.product;
+    const order = req.body.order;
+    const quantity = req.body.quantity;
 
-        linefonct.updateLine(lineid, product, order, quantity, (data) => {
-            res.send(data);
-        });
-
-
+    linefonct.updateLine(lineid, product, order, quantity, (data) => {
+      res.send(data);
     });
-
+  });
 }
 
-/** Créer Route de Metier */
+/** Crï¿½er Route de Metier */
 export { routeline };

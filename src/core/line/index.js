@@ -10,7 +10,7 @@
  * @see app/core/line
  */
 
-const Line = require('app/core/bdd');
+const Line = require("app/core/bdd");
 
 /**
  * Fonction ajoutant une nouvelle ligne de commande
@@ -20,19 +20,14 @@ const Line = require('app/core/bdd');
  * @param {any} callback Callback renvoyant le résultat de la fonction addLine
  */
 function addLine(productAdd, orderAdd, quantityAdd, callback) {
-
-
-    Line.OrderlineModel.create({ product: productAdd, order: orderAdd, quantity: quantityAdd }, function (err, product, order, quantity) {
-        if (err) {
-            callback('Probleme lors du passage de la requ�te Add :' + err);
-        } else {
-            var data = 'Product: ' + productAdd + ' | Order: ' + orderAdd + ' | Quantity: ' + quantityAdd;
-            callback(data);
-        }
-
-    });
-
-
+  Line.OrderlineModel.create({ product: productAdd, order: orderAdd, quantity: quantityAdd }, (err, product, order, quantity) => {
+    if (err) {
+      callback(`Probleme lors du passage de la requ�te Add :${err}`);
+    } else {
+      const data = `Product: ${productAdd} | Order: ${orderAdd} | Quantity: ${quantityAdd}`;
+      callback(data);
+    }
+  });
 }
 
 /**
@@ -41,14 +36,14 @@ function addLine(productAdd, orderAdd, quantityAdd, callback) {
  * @param {any} callback Callback renvoyant le résultat de la fonction deleteLine
  */
 function deleteLine(idLine, callback) {
-    Line.OrderlineModel.remove({ _id: idLine }, function (err) {
-        if (err) {
-            callback('Probleme lors du passage de la requ�te Delete :' + err);
-        } else {
-            var data = 'Suppression de' + idLine + 'effectu�e';
-            callback(data);
-        }
-    });
+  Line.OrderlineModel.remove({ _id: idLine }, (err) => {
+    if (err) {
+      callback(`Probleme lors du passage de la requ�te Delete :${err}`);
+    } else {
+      const data = `Suppression de${idLine}effectu�e`;
+      callback(data);
+    }
+  });
 }
 
 /**
@@ -60,24 +55,19 @@ function deleteLine(idLine, callback) {
  * @param {any} callback Callback renvoyant le résultat de la fonction Update
  */
 function updateLine(_id, productUp, orderUp, quantityUp, callback) {
+  Line.OrderlineModel.findById({ _id }, (err, Up) => {
+    if (err) {
+      callback(`Probleme lors du passage de la requ�te Update :${err}`);
+    } else {
+      Up.product = productUp;
+      Up.order = orderUp;
+      Up.quantity = quantityUp;
+      Up.save();
 
-
-    Line.OrderlineModel.findById({ _id }, function (err, Up) {
-        if (err) {
-            callback('Probleme lors du passage de la requ�te Update :' + err);
-        } else {
-            Up.product = productUp;
-            Up.order = orderUp;
-            Up.quantity = quantityUp;
-            Up.save();
-
-            var data = 'Product: ' + productUp + ' | Order: ' + orderUp + ' | Quantity: ' + quantityUp;
-            callback(data);
-        }
-
-    });
-
-
+      const data = `Product: ${productUp} | Order: ${orderUp} | Quantity: ${quantityUp}`;
+      callback(data);
+    }
+  });
 }
 
 /** Export des fonctions addLine, deleteLine, updateLine */

@@ -10,7 +10,7 @@
  * @see app/core/order
  */
 
-const order = require('app/core/bdd');
+const order = require("app/core/bdd");
 
 
 /**
@@ -18,15 +18,14 @@ const order = require('app/core/bdd');
  * @param {any} callback Callback renvoyant le résultat de la fonction ListOrder
  */
 function ListOrder(callback) {
-
-    order.OrderModel.find((err, data) => {
-        if (!err) {
-            callback(data);
-        } else {
-            data = "Erreur lors de la récupération des commandes";
-            callback(data);
-        }
-    });
+  order.OrderModel.find((err, data) => {
+    if (!err) {
+      callback(data);
+    } else {
+      data = "Erreur lors de la récupération des commandes";
+      callback(data);
+    }
+  });
 }
 
 /**
@@ -35,16 +34,14 @@ function ListOrder(callback) {
  * @param {any} callback Callback renvoyant le résultat de la fonction GetOrderById
  */
 function GetOrderById(idrecup, callback) {
-
-    order.OrderModel.findById(idrecup, function (err, data) {
-        if (!err) {
-            callback(data);
-        }
-        else {
-            data = "Erreur lors de la récupération de la commande.";
-            callback(data);
-        }
-    });
+  order.OrderModel.findById(idrecup, (err, data) => {
+    if (!err) {
+      callback(data);
+    } else {
+      data = "Erreur lors de la récupération de la commande.";
+      callback(data);
+    }
+  });
 }
 
 /**
@@ -56,16 +53,17 @@ function GetOrderById(idrecup, callback) {
  * @param {any} callback Callback renvoyant le résultat de la fonction CreateOrder
  */
 function CreateOrder(codeAdd, totalAdd, dateAdd, statusAdd, callback) {
-
-    order.OrderModel.create({ code: codeAdd, total: totalAdd, date: dateAdd, Status: statusAdd }, function (err, code, date, total, Status) {
-        if (!err) {
-            var data = codeAdd + ' , ' + dateAdd + ' , ' + totalAdd + ' et ' + statusAdd;
-            callback(data);
-        } else {
-            data = "Erreur lors de la création d'une commande";
-            callback(data);
-        }
-    });
+  order.OrderModel.create({
+    code: codeAdd, total: totalAdd, date: dateAdd, Status: statusAdd,
+  }, (err, code, date, total, Status) => {
+    if (!err) {
+      var data = `${codeAdd} , ${dateAdd} , ${totalAdd} et ${statusAdd}`;
+      callback(data);
+    } else {
+      data = "Erreur lors de la création d'une commande";
+      callback(data);
+    }
+  });
 }
 
 /**
@@ -74,14 +72,13 @@ function CreateOrder(codeAdd, totalAdd, dateAdd, statusAdd, callback) {
  * @param {any} callback Callback renvoyant le résultat de la fonction DeleteOrder
  */
 function DeleteOrder(idprod) {
-
-    order.OrderModel.remove({ _id: idprod }, function (err) {
-        if (err) {
-            console.log("Erreur lors de la suppression d'une commande.");
-        } else {
-            console.log('Commande supprimée avec succès.');
-        }
-    });
+  order.OrderModel.remove({ _id: idprod }, (err) => {
+    if (err) {
+      console.log("Erreur lors de la suppression d'une commande.");
+    } else {
+      console.log("Commande supprimée avec succès.");
+    }
+  });
 }
 
 /**
@@ -94,20 +91,19 @@ function DeleteOrder(idprod) {
  * @param {any} callback Callback renvoyant le résultat de la fonction UpdateOrder
  */
 function UpdateOrder(idprod, codeUpdate, totalUpdate, dateUpdate, StatusUpdate, callback) {
+  order.OrderModel.findById(idprod, (err, doc) => {
+    if (!err) {
+      doc.code = codeUpdate;
+      doc.total = totalUpdate;
+      doc.date = dateUpdate;
+      doc.Status = StatusUpdate;
 
-    order.OrderModel.findById(idprod, function (err, doc) {
-        if (!err) {
-            doc.code = codeUpdate;
-            doc.total = totalUpdate;
-            doc.date = dateUpdate;
-            doc.Status = StatusUpdate;
-
-            doc.save(callback(doc));
-        } else {
-            doc = "Erreur lors de la mise à jour de la commande.";
-            callback(doc);
-        }
-    });
+      doc.save(callback(doc));
+    } else {
+      doc = "Erreur lors de la mise à jour de la commande.";
+      callback(doc);
+    }
+  });
 }
 
 /** Export des fonctions ListOrder, GetOrderById, CreateOrder, DeleteOrder, UpdateOrder */
