@@ -23,7 +23,7 @@ const routemetier = require('app/core/metier/routemetier.js');
 
 /**
  * Fonction de création des différentes routes de l'application
- * @param {any} app Paramètre de la fonctoin faisant référence à l'applicatoin elle-même
+ * @param {any} app Paramètre de la fonction faisant référence à l'applicatoin elle-même
  */
 function route(app) {
   routecommande.routecommande(app);
